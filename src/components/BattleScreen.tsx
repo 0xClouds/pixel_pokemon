@@ -32,7 +32,7 @@ const BattleScreen: React.FC = () => {
               <div className="flex flex-col">
                 <span className="font-bold">{wildPokemon.name}</span>
                 <span className="text-xs">Lv.{wildPokemon.level}</span>
-                <div className="mt-1 h-2 w-24 bg-gray-200 rounded-full overflow-hidden">
+                <div className="mt-1 h-3 w-28 bg-gray-200 rounded-full overflow-hidden shadow-inner">
                   <div
                     className={`h-full ${
                       wildHealthPercent > 50
@@ -44,7 +44,7 @@ const BattleScreen: React.FC = () => {
                     style={{ width: `${wildHealthPercent}%` }}
                   ></div>
                 </div>
-                <div className="text-xs mt-1">
+                <div className="text-xs mt-1 font-semibold">
                   {wildPokemon.hp}/{wildPokemon.maxHp} HP
                 </div>
               </div>
@@ -71,7 +71,7 @@ const BattleScreen: React.FC = () => {
               <div className="flex flex-col">
                 <span className="font-bold">{playerPokemon.name}</span>
                 <span className="text-xs">Lv.{playerPokemon.level}</span>
-                <div className="mt-1 h-2 w-24 bg-gray-200 rounded-full overflow-hidden">
+                <div className="mt-1 h-3 w-28 bg-gray-200 rounded-full overflow-hidden shadow-inner">
                   <div
                     className={`h-full ${
                       playerHealthPercent > 50
@@ -83,7 +83,7 @@ const BattleScreen: React.FC = () => {
                     style={{ width: `${playerHealthPercent}%` }}
                   ></div>
                 </div>
-                <div className="text-xs mt-1">
+                <div className="text-xs mt-1 font-semibold">
                   {playerPokemon.hp}/{playerPokemon.maxHp} HP
                 </div>
               </div>
@@ -92,27 +92,31 @@ const BattleScreen: React.FC = () => {
         </div>
 
         {/* Battle Message */}
-        <div className="p-4 border-t border-gray-200">
-          <p className="text-center font-pixel">{battle.message}</p>
+        <div className="p-4 border-t border-gray-200 bg-gray-50">
+          <p className="text-center font-pixel text-lg font-bold text-gray-900">
+            {battle.message}
+          </p>
         </div>
 
         {/* Battle Actions */}
         <div className="p-4 border-t border-gray-200 bg-gray-100">
           {isPlayerTurn ? (
             <div className="grid grid-cols-2 gap-2">
-              <div className="col-span-2 font-bold mb-2">
+              <div className="col-span-2 font-bold text-lg mb-3 text-blue-700">
                 What will {playerPokemon.name} do?
               </div>
 
               {/* Attack options */}
-              <div className="bg-white p-2 rounded shadow">
-                <h3 className="text-center font-bold mb-2">Attack</h3>
+              <div className="bg-white p-3 rounded shadow-md border border-gray-200">
+                <h3 className="text-center font-bold mb-2 text-red-600">
+                  Attack
+                </h3>
                 <div className="grid grid-cols-2 gap-1">
                   {playerPokemon.moves.map((move, index) => (
                     <button
                       key={move.name}
                       onClick={() => attackWildPokemon(index)}
-                      className="px-2 py-1 bg-blue-100 hover:bg-blue-200 rounded text-sm"
+                      className="px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded text-sm font-semibold shadow-md transition-colors"
                     >
                       {move.name}
                     </button>
@@ -124,21 +128,23 @@ const BattleScreen: React.FC = () => {
               <div className="flex flex-col gap-2">
                 <button
                   onClick={catchPokemon}
-                  className="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                  className="px-3 py-2 bg-red-500 hover:bg-red-600 text-white rounded font-bold shadow-md transition-colors"
                 >
                   Catch
                 </button>
                 <button
                   onClick={runFromBattle}
-                  className="px-3 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+                  className="px-3 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded font-bold shadow-md transition-colors"
                 >
                   Run
                 </button>
               </div>
             </div>
           ) : (
-            <div className="text-center p-4">
-              <p>Wait for opponent's move...</p>
+            <div className="text-center p-5 bg-gray-100 rounded-lg">
+              <p className="text-lg font-bold text-orange-600 animate-pulse">
+                Wait for opponent's move...
+              </p>
             </div>
           )}
         </div>
