@@ -90,7 +90,9 @@ export async function POST(request: NextRequest) {
     };
 
     return NextResponse.json(generatedPokemon);
-  } catch (error) {
+  } catch (err) {
+    // eslint-disable-next-line no-console -- helpful for debugging on the server
+    console.error("Failed to generate Pokémon:", err);
     return NextResponse.json(
       { error: "Failed to generate Pokemon" },
       { status: 400 }

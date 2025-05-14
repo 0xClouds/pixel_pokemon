@@ -92,7 +92,7 @@ export interface GameState {
   map: GameMap;
   battle: Battle;
   pokemons: Pokemon[];
-  inventory: any[]; // Will expand later
+  inventory: unknown[]; // Will expand later
   isLoading: boolean;
   isPaused: boolean;
 }

@@ -143,7 +143,7 @@ const BattleScreen: React.FC = () => {
           ) : (
             <div className="text-center p-5 bg-gray-100 rounded-lg">
               <p className="text-lg font-bold text-orange-600 animate-pulse">
-                Wait for opponent's move...
+                Wait for opponent&apos;s move...
               </p>
             </div>
           )}
